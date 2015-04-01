@@ -18,7 +18,7 @@
 
     <body>
         <div class="outer-container">
-        <div class="header-bar">Affordability
+        <div class="header-bar">Solar Cashflows Estimator
         </div>
         <div class="first-text">Your monthly payment is: </div>
         <div class='chart-container'>
@@ -28,23 +28,22 @@
             </div>
         </div>
 
-        <div class="graph-div">
-            <div class="cost-data">$2,912
-            <div class="three-col-info"> Principal & <br>Interest
-            </div>
-            </div>
-            <div class="cost-data">$785
-            <div class="three-col-info"> Property<br>Taxes
-            </div>
-            </div>
-            <div class="cost-data">$283
-            <div class="three-col-info"> Homeowner's Insurance
-            </div>
+        <div class="numeric-outputs-div">
+          <div class="numeric-outputs-centering-div">
+              <div class="cost-data">$2,912
+                <div class="three-col-info"> Principal + Interest </div>
+              </div>
+              <div class="cost-data">$785
+                <div class="three-col-info"> Property Taxes </div>
+              </div>
+              <div class="cost-data">$283
+                <div class="three-col-info"> Homeowner's Insurance </div>
+              </div>
             </div>
         </div>
 
         <div class="slider-box">
-            <div class="slider-title">Home Price ($) </div>
+            <div class="slider-title">Project Cost ($) </div>
             <div class="slider-data-num" id='home-price-result' >$140k </div>
             <div>
                 <input id='home-price-slider' class="mySlider" type="range" min="0" max="2000000" value="400000" step="0.5" />
@@ -52,7 +51,7 @@
         </div>
 
         <div class="slider-box">
-            <div class="slider-title">Down Payment (%) </div>
+            <div class="slider-title">Equity (%) </div>
             <div> <input id='down-payment-slider' class="mySlider" type="range" min="0" max="30" value="20" step="0.5" />
             </div>
             <div class="slider-data-num" id='down-payment-result'>$80k
@@ -60,7 +59,7 @@
         </div>
 
         <div class="slider-box">
-            <div class="slider-title">Interest Rate (%) </div>
+            <div class="slider-title">Interest Rate (WACC) (%) </div>
             <div> <input id='interest-rate-slider' class="mySlider" type="range" min="0" max="8" value="4.5" step="0.05" />
             </div>
             <div class="slider-data-num" id='interest-rate-result'>4.50%
