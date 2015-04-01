@@ -123,15 +123,10 @@ function calculateCashflows() {
     };
   };
 
-  function updateDisplay() {
-    getValuesFromSliders();
-    updateNumericResults();
-    removeOldDivs();
-    calculateMonthlyPayment();
-    updateMonthlyPaymentResults();
-
+  function parseDataForPieChart(){
     // Create pie chart labels and values
     var dataArray = [];
+    // Add headers.
     dataArray.push(['Expense', 'Per Year']);
 
     for(var i = 0; i<this.resultsArray.length; i++){
@@ -140,20 +135,23 @@ function calculateCashflows() {
       dataArray.push(dataElement);
     };
 
-    console.log(dataArray);
+    this.data = google.visualization.arrayToDataTable(dataArray);
+  };
 
-    // var dataArray = [
-    //   ['Expense', 'Per Month'],
-    //   ['Principal & Interest',     2912],
-    //   ['Property Taxes',      785],
-    //   ['Insurance',  283]
-    // ];
-    // console.log(dataArray);
-
-    var data = google.visualization.arrayToDataTable(dataArray);
-
+  function updatePieChart(){
     this.chart = new google.visualization.PieChart(document.getElementById('donutchart'));
-    this.chart.draw(data, options);
+    this.chart.draw(this.data, options);
+  }
+
+  function updateDisplay() {
+    getValuesFromSliders();
+    updateNumericResults();
+    removeOldDivs();
+    calculateMonthlyPayment();
+    updateMonthlyPaymentResults();
+    parseDataForPieChart();
+    updatePieChart();
+
   };
 
     initializeResults();
