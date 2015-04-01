@@ -1,0 +1,113 @@
+.outer-container {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 10px auto;
+    border: 1px solid red;
+}
+
+.header-bar {
+    background-color: #539DBF;
+    width: 320px;
+    height: 50px;
+    position: relative;
+    top: 50%;
+    line-height: 50px;
+    text-align: center;
+    color: white;
+    font-family: 'Helvetica Neue'; 
+}
+
+.first-text {
+    background-color: white;
+    font-family: 'Helvetica Neue';
+    color: #9C9C9C;
+    height: 30px;
+    padding-left: 10px;
+    border-bottom: 1px solid #D9D9D7;
+}
+
+
+#monthly-payment-result {
+    color: black;
+    font-weight: bold;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 152px;
+
+}
+.graph-div {
+    background-color: white;
+    /*width: 800px;*/
+    height: 50px;
+    position: relative;
+    display: inline-block;
+    border-bottom: 2px solid #D9D9D7;
+    padding-left: 27px;
+}
+
+.three-col-info {
+    background-color: white;
+    word-wrap: break-word;
+    font-family: 'Helvetica Neue'; 
+    font-size: 10px;
+}
+.slider-box {
+    width: 300px;
+    height: 60px;
+    position: relative;
+    display: block; 
+    background-color: #F9F9F9;
+    border-bottom: 1px solid #D9D9D7;
+    padding: 0px 10px;
+}
+.slider-title {
+    position: absolute;
+    width: 120px;
+    height: 50px;
+    top: 5px;
+    left: 10px;
+    font-family: 'Helvetica Neue'; 
+    font-size: 13px;
+    color: #9C9C9C;
+    font-weight: bold;
+    background-color: #F9F9F9;
+}
+
+.mySlider {
+    position: absolute;
+    width: 90%;
+    height: 30px;
+    top: 20px;
+    left: 10px;
+    font-family: 'Helvetica Neue';
+}
+
+.slider-data-num {
+    position: absolute;
+    width: auto;
+    height: 50px;
+    top: 5px;
+    right: 7%;
+    font-family: 'Helvetica Neue';
+    font-size: 13px;
+    color: #779DA5;
+    font-weight: bold;
+}
+
+.rates {
+    width: 140px;
+}
+
+#donutchart { 
+    margin: -24px 0px;
+    width: auto;
+    height: auto;
+}
+.cost-data {
+    font-family: 'Helvetica Neue';
+    font-size: 13px; 
+    display: inline-block;
+    width: 95px;
+}
