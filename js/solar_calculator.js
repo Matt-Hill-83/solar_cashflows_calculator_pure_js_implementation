@@ -20,6 +20,7 @@ function drawChart() {
     pieSliceTextStyle: {
     color: 'transparent',
     },
+
   };
 
 function getValuesFromSliders(){
@@ -29,7 +30,7 @@ function getValuesFromSliders(){
 }
 
 function updateNumericResults() {
-    // Set result field next to slider to slider value
+    // Set result field next to slider value
     var homePriceResultEl = document.getElementById("home-price-result");
     homePriceResultEl.innerHTML = this.homePrice.insertComma();
 
@@ -38,34 +39,31 @@ function updateNumericResults() {
 
     var interestRateResultEl = document.getElementById("interest-rate-result");
     interestRateResultEl.innerHTML = this.interestRate;
-
 };
+
+function calculateMonthlyPayment(){
+  // Breakout of monthly payment calculation
+  var monthlyInterestRate = this.interestRate/12/100;
+  var termInYears = 1;
+  var loanAmount = this.homePrice - (this.downPayment/100)*this.homePrice;
+  // var monthlyPayment;
+
+  var numerator = monthlyInterestRate *(Math.pow(1.0 + monthlyInterestRate, 12.0 * termInYears));
+  var denominator = Math.pow((1 + monthlyInterestRate), (12.0 * termInYears)) - 1.0;
+  var numOverDenom = numerator/denominator;
+  var monthlyPayment = loanAmount * numOverDenom;
+  this.monthlyPaymentStr = monthlyPayment.toFixed(0).insertComma();
+
+}
 
 function updateDisplay() {
   getValuesFromSliders();
   updateNumericResults();
+  calculateMonthlyPayment();
 
-    // Breakout of monthly payment calculation
-    var monthlyInterestRate = this.interestRate/12/100;
-    var termInYears = 1;
-    var loanAmount = this.homePrice - (this.downPayment/100)*this.homePrice;
-    var monthlyPayment;
+  var monthlyPaymentResult = document.getElementById("monthly-payment-result");
+  monthlyPaymentResult.innerHTML = '$' + this.monthlyPaymentStr;
 
-    var numerator = monthlyInterestRate *(Math.pow(1.0 + monthlyInterestRate, 12.0 * termInYears));
-    var denominator = Math.pow((1 + monthlyInterestRate), (12.0 * termInYears)) - 1.0;
-    var numOverDenom = numerator/denominator;
-    monthlyPayment = loanAmount * numOverDenom;
-    // monthlyPayment = monthlyPayment.toFixed(0);
-    var monthlyPaymentStr = "$" + monthlyPayment.toFixed(0).insertComma();
-
-    var monthlyPaymentResult = document.getElementById("monthly-payment-result");
-    monthlyPaymentResult.innerHTML = monthlyPaymentStr;
-
-    console.log(loanAmount)
-    console.log(numOverDenom)
-    console.log(this.interestRate)
-    console.log(monthlyPayment)
-    console.log('--------------------')
   this.chart.draw(data, options);
   };
 
