@@ -1,72 +1,68 @@
 <!doctype html>
-
 <html>
     <head>
-        <link href="css/custom.css" rel="stylesheet">
-        <!-- <link href="css/donut.css" rel="stylesheet"> -->
+        <link href='css/custom.css' rel='stylesheet'>
 
-        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-        <script type="text/javascript" src="js/solar_calculator.js"></script>
+        <script type='text/javascript' src='https://www.google.com/jsapi'></script>
+        <script type='text/javascript' src='js/solar_calculator.js'></script>
 
-        <script type="text/javascript">
-          google.load("visualization", "1", {packages:["corechart"]});
+        <script type='text/javascript'>
+          google.load('visualization', '1', {packages:['corechart']});
           google.setOnLoadCallback(drawChart);
         </script>
     </head>
 
     <body>
-        <div class="outer-container">
-        <div class="header-bar">Solar Cashflows Estimator
-        </div>
-        <div class="first-text">Annual Cash Outflows </div>
+      <div class='outer-container'>
+      <div class='header-bar'>Solar Cashflow Estimator </div>
+      <div class='first-text'>Annual Cash Outflows </div>
 
-        <div class='chart-container'>
-            <span id='monthly-payment-result'> $450,000</span>
-            <div id="donutchart" >
+      <div class='chart-container'>
+          <span id='monthly-payment-result'> $450,000</span>
+          <div id='donutchart' > </div>
+      </div>
+
+      <div class='numeric-outputs-div'>
+        <div class='numeric-outputs-centering-div'>
+            <div class='cost-data'>$2,912
+              <div class='three-col-info'> O+M</div>
+            </div>
+            <div class='cost-data'>$785
+              <div class='three-col-info'> Inverters </div>
+            </div>
+            <div class='cost-data'>$283
+              <div class='three-col-info'> Insurance </div>
+            </div>
+            <div class='cost-data'>$283
+              <div class='three-col-info'> Debt Service </div>
+            </div>
+          </div><!-- numeic-outputs-centering-div -->
+      </div> <!-- numeic-outputs-div -->
+
+      <div class='sliders-div'>
+        <div class='slider-box'>
+            <div class='slider-title'>Project Cost ($) </div>
+            <div class='slider-data-num' id='home-price-result' >$140k </div>
+            <div>
+              <input id='home-price-slider' class='mySlider' type='range' min='0' max='2000000' value='400000' step='0.5' />
             </div>
         </div>
 
-        <div class="numeric-outputs-div">
-          <div class="numeric-outputs-centering-div">
-              <div class="cost-data">$2,912
-                <div class="three-col-info"> Principal + Interest </div>
-              </div>
-              <div class="cost-data">$785
-                <div class="three-col-info"> Property Taxes </div>
-              </div>
-              <div class="cost-data">$283
-                <div class="three-col-info"> Homeowner's Insurance </div>
-              </div>
+        <div class='slider-box'>
+            <div class='slider-title'>Equity (%) </div>
+            <div> <input id='down-payment-slider' class='mySlider' type='range' min='0' max='30' value='20' step='0.5' />
             </div>
+            <div class='slider-data-num' id='down-payment-result'>$80k </div>
         </div>
 
-        <div class='sliders-div'>
-          <div class="slider-box">
-              <div class="slider-title">Project Cost ($) </div>
-              <div class="slider-data-num" id='home-price-result' >$140k </div>
-              <div>
-                  <input id='home-price-slider' class="mySlider" type="range" min="0" max="2000000" value="400000" step="0.5" />
-              </div>
-          </div>
-
-          <div class="slider-box">
-              <div class="slider-title">Equity (%) </div>
-              <div> <input id='down-payment-slider' class="mySlider" type="range" min="0" max="30" value="20" step="0.5" />
-              </div>
-              <div class="slider-data-num" id='down-payment-result'>$80k
-              </div>
-          </div>
-
-          <div class="slider-box">
-              <div class="slider-title">Interest Rate (WACC) (%) </div>
-              <div> <input id='interest-rate-slider' class="mySlider" type="range" min="0" max="8" value="4.5" step="0.05" />
-              </div>
-              <div class="slider-data-num" id='interest-rate-result'>4.50%
-              </div>
-          </div>
+        <div class='slider-box'>
+            <div class='slider-title'>Interest Rate (WACC) (%) </div>
+            <div> <input id='interest-rate-slider' class='mySlider' type='range' min='0' max='8' value='4.5' step='0.05' />
+            </div>
+            <div class='slider-data-num' id='interest-rate-result'>4.50% </div>
         </div>
 
-        </div>
+      </div> <!-- sliders-div -->
+
     </body>
-
 </html>
