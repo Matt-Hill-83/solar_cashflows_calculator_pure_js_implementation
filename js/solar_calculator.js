@@ -7,13 +7,6 @@ String.prototype.insertComma = function() {
 
 function calculateCashflows() {
 
-  // var data = google.visualization.arrayToDataTable([
-  //   ['Expense', 'Per Month'],
-  //   ['Principal & Interest',     2912],
-  //   ['Property Taxes',      785],
-  //   ['Insurance',  283]
-  // ]);
-
   var options = {
     pieHole: 0.6,
     'legend':'none',
@@ -23,10 +16,13 @@ function calculateCashflows() {
     },
   };
 
-  // Set up UI events.
-  document.getElementById("home-price-slider").onchange = function (){updateDisplay()};
-  document.getElementById("down-payment-slider").onchange = function (){updateDisplay()};
-  document.getElementById("interest-rate-slider").onchange = function (){updateDisplay()};
+  function setUpUiEvents(){
+    // Set up UI events.
+    document.getElementById("home-price-slider").onchange = function (){updateDisplay()};
+    document.getElementById("down-payment-slider").onchange = function (){updateDisplay()};
+    document.getElementById("interest-rate-slider").onchange = function (){updateDisplay()};
+
+  }
 
   function initializeResults(){
     this.resultsArray = [];
@@ -153,7 +149,8 @@ function calculateCashflows() {
     updatePieChart();
 
   };
-
+    setUpUiEvents();
+    // Initialize display before sliders are moved.
     initializeResults();
     updateDisplay();
 
