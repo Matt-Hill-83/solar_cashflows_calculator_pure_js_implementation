@@ -7,12 +7,12 @@ String.prototype.insertComma = function() {
 
 function calculateCashflows() {
 
-  var data = google.visualization.arrayToDataTable([
-    ['Expense', 'Per Month'],
-    ['Principal & Interest',     2912],
-    ['Property Taxes',      785],
-    ['Insurance',  283]
-  ]);
+  // var data = google.visualization.arrayToDataTable([
+  //   ['Expense', 'Per Month'],
+  //   ['Principal & Interest',     2912],
+  //   ['Property Taxes',      785],
+  //   ['Insurance',  283]
+  // ]);
 
   var options = {
     pieHole: 0.6,
@@ -130,7 +130,28 @@ function calculateCashflows() {
     calculateMonthlyPayment();
     updateMonthlyPaymentResults();
 
-    console.log(this.resultsArray);
+    // Create pie chart labels and values
+    var dataArray = [];
+    dataArray.push(['Expense', 'Per Year']);
+
+    for(var i = 0; i<this.resultsArray.length; i++){
+      r = resultsArray[i];
+      var dataElement = [r.name, r.value ]
+      dataArray.push(dataElement);
+    };
+
+    console.log(dataArray);
+
+    // var dataArray = [
+    //   ['Expense', 'Per Month'],
+    //   ['Principal & Interest',     2912],
+    //   ['Property Taxes',      785],
+    //   ['Insurance',  283]
+    // ];
+    // console.log(dataArray);
+
+    var data = google.visualization.arrayToDataTable(dataArray);
+
     this.chart = new google.visualization.PieChart(document.getElementById('donutchart'));
     this.chart.draw(data, options);
   };

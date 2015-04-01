@@ -1,2 +1,9 @@
-- make slider values update while sliding
+- fix commas in 7 digit numbers
+- create some realish math for the cost breakdown
+- fix match in monthly payment calc
 - update pie chart with dom fractions
+
+- make slider values update while sliding
+- rewrite with Angular
+- figure out text wrapping
+- nix second header or give better title, and vertically center
