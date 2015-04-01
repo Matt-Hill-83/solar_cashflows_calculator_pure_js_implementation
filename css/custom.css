@@ -3,11 +3,13 @@
     left: 50%;
     transform: translateX(-50%);
     margin: 10px auto;
-    border: 1px solid red;
+    border: 1px solid rgb(100,100,100);
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 .header-bar {
-    background-color: #539DBF;
+    background-color: cornflowerblue;
     width: 320px;
     height: 50px;
     position: relative;
@@ -16,6 +18,7 @@
     text-align: center;
     color: white;
     font-family: 'Helvetica Neue';
+    font-size: 21px;
 }
 
 .first-text {
@@ -25,6 +28,7 @@
     height: 30px;
     padding-left: 10px;
     border-bottom: 1px solid #D9D9D7;
+    text-align: center;
 }
 
 
@@ -63,10 +67,14 @@
     width: 70px;
     margin: 0 5px;
     text-align: center;
-  /*white-space: nowrap;*/
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background-color: rgb(230,230,230);
+    border-radius: 4px;
 }
 .three-col-info {
-    background-color: white;
+    /*background-color: white;*/
     word-wrap: break-word;
     font-family: 'Helvetica Neue';
     font-size: 10px;
