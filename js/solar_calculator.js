@@ -76,23 +76,31 @@ function calculateCashflows() {
 
   };
 
+  function createSubPayment(result){
+    r = result
+    var div = document.createElement("div");
+    div.className = 'result-cost';
+    var cost = r.value.toFixed(0).insertComma();
+    var name = r.name;
+    div.innerHTML = "$" + cost + "<br>" + name;
+    var parent = document.getElementsByClassName("numeric-outputs-centering-div")[0];
+
+    parent.appendChild(div);
+
+  }
+
   function updateMonthlyPaymentResults(){
     var monthlyPaymentResult = document.getElementById("monthly-payment-result");
     monthlyPaymentResult.innerHTML = '$' + this.monthlyPaymentStr;
 
+    // Create and display broken out subpayments
     for(var i = 0; i<this.resultsArray.length; i++){
       r = resultsArray[i];
       r.value = r.fixedCost + this.monthlyPayment * r.fractionOfProjectSize;
 
-      var div = document.createElement("div");
-      div.className = 'result-cost';
-      div.innerHTML = "Hello";
-      var parent = document.getElementsByClassName("numeric-outputs-centering-div")[0];
-
-      parent.appendChild(div);
-    }
-
-  }
+      createSubPayment(r);
+    };
+  };
 
   function updateDisplay() {
     getValuesFromSliders();
