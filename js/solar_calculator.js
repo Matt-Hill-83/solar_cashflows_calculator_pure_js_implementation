@@ -30,6 +30,20 @@ function calculateCashflows() {
 
   this.chart = new google.visualization.PieChart(document.getElementById('donutchart'));
 
+
+  function initializeResults(){
+    this.resultsArray = [];
+
+    var oAndM = new Result();
+    r = oAndM;
+    r.name = 'O+M';
+    r.fixedCost = 500;
+    r.fractionOfProjectSize = 0.5;
+
+    this.resultsArray.push(r);
+
+  }
+
   function getValuesFromSliders(){
     this.homePrice = document.getElementById("home-price-slider").value;
     this.downPayment = document.getElementById("down-payment-slider").value;
@@ -57,7 +71,7 @@ function calculateCashflows() {
     var numerator = monthlyInterestRate *(Math.pow(1.0 + monthlyInterestRate, 12.0 * termInYears));
     var denominator = Math.pow((1 + monthlyInterestRate), (12.0 * termInYears)) - 1.0;
     var numOverDenom = numerator/denominator;
-    var monthlyPayment = loanAmount * numOverDenom;
+    this.monthlyPayment = loanAmount * numOverDenom;
     this.monthlyPaymentStr = monthlyPayment.toFixed(0).insertComma();
 
   };
@@ -65,6 +79,18 @@ function calculateCashflows() {
   function updateMonthlyPaymentResults(){
     var monthlyPaymentResult = document.getElementById("monthly-payment-result");
     monthlyPaymentResult.innerHTML = '$' + this.monthlyPaymentStr;
+
+    for(var i = 0; i<this.resultsArray.length; i++){
+      r = resultsArray[i];
+      r.value = r.fixedCost + this.monthlyPayment * r.fractionOfProjectSize;
+
+      var div = document.createElement("div");
+      div.className = 'result-cost';
+      div.innerHTML = "Hello";
+      var parent = document.getElementsByClassName("numeric-outputs-centering-div")[0];
+
+      parent.appendChild(div);
+    }
 
   }
 
@@ -74,9 +100,11 @@ function calculateCashflows() {
     calculateMonthlyPayment();
     updateMonthlyPaymentResults();
 
+    console.log(this.resultsArray);
     this.chart.draw(data, options);
   };
 
+    initializeResults();
     updateDisplay();
 
 };

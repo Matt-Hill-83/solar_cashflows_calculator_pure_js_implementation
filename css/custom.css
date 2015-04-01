@@ -57,7 +57,7 @@
   left: 50%;
   transform: translateX(-50%);
 }
-.cost-data {
+.result-cost {
     border: 1px black solid;
     font-family: 'Helvetica Neue';
     font-size: 13px;
@@ -73,7 +73,7 @@
     padding: 3px 0px;
     height: 40px;
 }
-.three-col-info {
+.result-name {
     /*background-color: white;*/
     word-wrap: break-word;
     font-family: 'Helvetica Neue';
