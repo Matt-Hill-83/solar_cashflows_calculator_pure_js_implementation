@@ -5,7 +5,7 @@ String.prototype.insertComma = function() {
   }
 };
 
-function drawChart() {
+function calculateCashflows() {
 
   var data = google.visualization.arrayToDataTable([
     ['Expense', 'Per Month'],
@@ -37,15 +37,15 @@ function drawChart() {
   };
 
   function updateNumericResults() {
-      // Set result field next to slider value
-      var homePriceResultEl = document.getElementById("home-price-result");
-      homePriceResultEl.innerHTML = this.homePrice.insertComma();
+    // Set result field next to slider value
+    var homePriceResultEl = document.getElementById("home-price-result");
+    homePriceResultEl.innerHTML = this.homePrice.insertComma();
 
-      var downPaymentResultEl = document.getElementById("down-payment-result");
-      downPaymentResultEl.innerHTML = this.downPayment;
+    var downPaymentResultEl = document.getElementById("down-payment-result");
+    downPaymentResultEl.innerHTML = this.downPayment;
 
-      var interestRateResultEl = document.getElementById("interest-rate-result");
-      interestRateResultEl.innerHTML = this.interestRate;
+    var interestRateResultEl = document.getElementById("interest-rate-result");
+    interestRateResultEl.innerHTML = this.interestRate;
   };
 
   function calculateMonthlyPayment(){
