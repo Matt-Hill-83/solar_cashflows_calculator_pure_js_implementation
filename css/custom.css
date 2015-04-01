@@ -45,7 +45,7 @@
     background-color: white;
     /*border: 1px solid green;*/
     width: 100%;
-    height: 50px;
+    height: 60px;
     position: relative;
     display: inline-block;
     border-bottom: 2px solid #D9D9D7;
@@ -72,6 +72,8 @@
     text-overflow: ellipsis;
     background-color: rgb(230,230,230);
     border-radius: 4px;
+    padding: 5px;
+    height: 40px;
 }
 .three-col-info {
     /*background-color: white;*/
