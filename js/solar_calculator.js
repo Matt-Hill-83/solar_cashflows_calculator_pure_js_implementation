@@ -28,19 +28,35 @@ function calculateCashflows() {
   document.getElementById("down-payment-slider").onchange = function (){updateDisplay()};
   document.getElementById("interest-rate-slider").onchange = function (){updateDisplay()};
 
-  this.chart = new google.visualization.PieChart(document.getElementById('donutchart'));
 
 
   function initializeResults(){
     this.resultsArray = [];
 
-    var oAndM = new Result();
-    r = oAndM;
-    r.name = 'O+M';
-    r.fixedCost = 500;
-    r.fractionOfProjectSize = 0.5;
+    var r1 = new Result();
+    r1.name = 'O+M';
+    r1.fixedCost = 500;
+    r1.fractionOfProjectSize = 0.05;
 
-    this.resultsArray.push(r);
+    var r2 = new Result();
+    r2.name = 'Inverters';
+    r2.fixedCost = 500;
+    r2.fractionOfProjectSize = 0.04;
+
+    var r3 = new Result();
+    r3.name = 'Insurance';
+    r3.fixedCost = 500;
+    r3.fractionOfProjectSize = 0.03;
+
+    var r4 = new Result();
+    r4.name = 'Debt Service';
+    r4.fixedCost = 500;
+    r4.fractionOfProjectSize = 0.02;
+
+    this.resultsArray.push(r1);
+    this.resultsArray.push(r2);
+    this.resultsArray.push(r3);
+    this.resultsArray.push(r4);
 
   }
 
@@ -85,13 +101,20 @@ function calculateCashflows() {
     div.innerHTML = "$" + cost + "<br>" + name;
     var parent = document.getElementsByClassName("numeric-outputs-centering-div")[0];
 
-    parent.appendChild(div);
 
+    parent.appendChild(div);
   }
 
   function updateMonthlyPaymentResults(){
     var monthlyPaymentResult = document.getElementById("monthly-payment-result");
     monthlyPaymentResult.innerHTML = '$' + this.monthlyPaymentStr;
+
+    // Remove divs from previous display cycle
+    var parent = document.getElementsByClassName("numeric-outputs-centering-div")[0];
+    // var myNode = document.getElementById("foo");
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
 
     // Create and display broken out subpayments
     for(var i = 0; i<this.resultsArray.length; i++){
@@ -109,6 +132,7 @@ function calculateCashflows() {
     updateMonthlyPaymentResults();
 
     console.log(this.resultsArray);
+    this.chart = new google.visualization.PieChart(document.getElementById('donutchart'));
     this.chart.draw(data, options);
   };
 
