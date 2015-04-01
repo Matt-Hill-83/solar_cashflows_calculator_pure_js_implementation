@@ -28,8 +28,6 @@ function calculateCashflows() {
   document.getElementById("down-payment-slider").onchange = function (){updateDisplay()};
   document.getElementById("interest-rate-slider").onchange = function (){updateDisplay()};
 
-
-
   function initializeResults(){
     this.resultsArray = [];
 
@@ -105,22 +103,22 @@ function calculateCashflows() {
     parent.appendChild(div);
   }
 
+  function removeOldDivs(){
+    // Remove divs from previous display cycle
+    var parent = document.getElementsByClassName("numeric-outputs-centering-div")[0];
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    };
+  };
+
   function updateMonthlyPaymentResults(){
     var monthlyPaymentResult = document.getElementById("monthly-payment-result");
     monthlyPaymentResult.innerHTML = '$' + this.monthlyPaymentStr;
-
-    // Remove divs from previous display cycle
-    var parent = document.getElementsByClassName("numeric-outputs-centering-div")[0];
-    // var myNode = document.getElementById("foo");
-    while (parent.firstChild) {
-        parent.removeChild(parent.firstChild);
-    }
 
     // Create and display broken out subpayments
     for(var i = 0; i<this.resultsArray.length; i++){
       r = resultsArray[i];
       r.value = r.fixedCost + this.monthlyPayment * r.fractionOfProjectSize;
-
       createSubPayment(r);
     };
   };
@@ -128,6 +126,7 @@ function calculateCashflows() {
   function updateDisplay() {
     getValuesFromSliders();
     updateNumericResults();
+    removeOldDivs();
     calculateMonthlyPayment();
     updateMonthlyPaymentResults();
 

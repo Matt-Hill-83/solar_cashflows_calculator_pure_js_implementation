@@ -1,2 +1,2 @@
-- kill all create dom elements before creating new ones
+- make slider values update while sliding
 - update pie chart with dom fractions
