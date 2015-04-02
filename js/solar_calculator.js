@@ -7,13 +7,15 @@ String.prototype.insertComma = function() {
 
 function calculateCashflows() {
 
-  var options = {
-    pieHole: 0.6,
-    'legend':'none',
-    backgroundColor: 'transparent',
-    pieSliceTextStyle: {
-    color: 'transparent',
-    },
+  function setGraphOptions(){
+    this.options = {
+      pieHole: 0.6,
+      'legend':'none',
+      backgroundColor: 'transparent',
+      pieSliceTextStyle: {
+      color: 'transparent',
+      },
+    };
   };
 
   function setUpUiEvents(){
@@ -136,9 +138,10 @@ function calculateCashflows() {
 
   function updatePieChart(){
     this.chart = new google.visualization.PieChart(document.getElementById('donutchart'));
-    this.chart.draw(this.data, options);
+    this.chart.draw(this.data, this.options);
   }
 
+  // This is called when the user changes the input values on the UI.
   function updateDisplay() {
     getValuesFromSliders();
     updateNumericResults();
@@ -147,11 +150,13 @@ function calculateCashflows() {
     updateMonthlyPaymentResults();
     parseDataForPieChart();
     updatePieChart();
-
   };
-    setUpUiEvents();
-    // Initialize display before sliders are moved.
-    initializeResults();
-    updateDisplay();
+
+  // Run these after the html loads.
+  setUpUiEvents();
+  setGraphOptions();
+  // Initialize display before user moves sliders for the first time.
+  initializeResults();
+  updateDisplay();
 
 };
