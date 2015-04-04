@@ -120,13 +120,13 @@ function calculateCashflows() {
       appendSubPaymentResultDomElements(r);
     };
 
-    //  test stuff
-    var itm = document.getElementById("slider-box-template");
-    var cln = itm.cloneNode(true);
-    console.log(cln.className);
-    cln.className = 'slider-box'
-    // debugger
-    document.getElementsByClassName("sliders-div")[0].appendChild(cln);
+    // //  test stuff
+    // var itm = document.getElementById("slider-box-template");
+    // var cln = itm.cloneNode(true);
+    // console.log(cln.className);
+    // cln.className = 'slider-box'
+    // // debugger
+    // document.getElementsByClassName("sliders-div")[0].appendChild(cln);
 
   };
 
