@@ -26,7 +26,7 @@ function calculateCashflows() {
 
   }
 
-  function initializeResults(){
+  function initializeResultsDisplays(){
     this.resultsArray = [];
 
     var r1 = new Result();
@@ -88,7 +88,7 @@ function calculateCashflows() {
 
   };
 
-  function createSubPayment(result){
+  function appendSubPaymentResultDomElements(result){
     r = result
     var div = document.createElement("div");
     div.className = 'result-cost';
@@ -117,8 +117,23 @@ function calculateCashflows() {
     for(var i = 0; i<this.resultsArray.length; i++){
       r = resultsArray[i];
       r.value = r.fixedCost + this.monthlyPayment * r.fractionOfProjectSize;
-      createSubPayment(r);
+      appendSubPaymentResultDomElements(r);
     };
+
+    //  test stuff
+
+    // Get the last <li> element ("Milk") of <ul> with id="myList2"
+    var itm = document.getElementsByClassName("sliders-div")[0];
+
+    // Copy the <li> element and its child nodes
+    var cln = itm.cloneNode(true);
+    console.log(cln);
+
+    // Append the cloned <li> element to <ul> with id="myList1"
+    document.getElementsByClassName("sliders-div")[0].appendChild(cln);
+
+debugger
+
   };
 
   function parseDataForPieChart(){
@@ -155,8 +170,7 @@ function calculateCashflows() {
   // Run these after the html loads.
   setUpUiEvents();
   setGraphOptions();
-  // Initialize display before user moves sliders for the first time.
-  initializeResults();
+  initializeResultsDisplays();
   updateDisplay();
 
 };

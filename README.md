@@ -1,4 +1,4 @@
-#Solar Calculator
+#Solar Farm Cashflow Calculator
 ***
 This is a sample project that I built to help teach myself angular.
 It features 3 user inputs and 4 program outputs.
