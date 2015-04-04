@@ -133,3 +133,6 @@
     width: auto;
     height: auto;
 }
+.hidden{
+  display: none;
+}

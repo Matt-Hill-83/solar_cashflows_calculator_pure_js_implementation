@@ -31,7 +31,8 @@
       </div> <!-- numeic-outputs-div -->
 
       <div class='sliders-div'>
-        <div class='slider-box'>
+
+        <div id='slider-box-template' class='slider-box'>
             <div class='slider-title'>Project Cost ($) </div>
             <div class='slider-data-num' id='home-price-result' >$140k </div>
             <div>
@@ -39,14 +40,14 @@
             </div>
         </div>
 
-        <div class='slider-box'>
+        <div id='test2' class='slider-box'>
             <div class='slider-title'>Owner Equity (%) </div>
             <div> <input id='down-payment-slider' class='mySlider' type='range' min='0' max='30' value='20' step='0.5' />
             </div>
             <div class='slider-data-num' id='down-payment-result'>$80k </div>
         </div>
 
-        <div class='slider-box'>
+        <div id='test3' class='slider-box'>
             <div class='slider-title'>Interest Rate (WACC) (%) </div>
             <div> <input id='interest-rate-slider' class='mySlider' type='range' min='0' max='8' value='4.5' step='0.05' />
             </div>

@@ -1,19 +1,30 @@
 // Monkey patch in new function on String.prototype to format currency numbers
 String.prototype.insertComma = function() {
-  if (this.length >= 4) {
-    return (this.slice(0,-3) + "," + this.slice(-3 + Math.abs(0)));
+  // Remove number past decimal.
+  var arr  = this.split(".");
+  var newStr = arr[0];
+
+  // Insert commas at appropriate locations.
+  if (newStr.length > 6) {
+    return (newStr.slice(0,-6) + "," + newStr.slice(-6, -3) + "," + newStr.slice(-3));
+  } else if (newStr.length > 3) {
+    return (newStr.slice(0,-3) + "," + newStr.slice(-3));
+  }else{
+    return newStr.slice(0);
   }
 };
 
 function calculateCashflows() {
 
-  var options = {
-    pieHole: 0.6,
-    'legend':'none',
-    backgroundColor: 'transparent',
-    pieSliceTextStyle: {
-    color: 'transparent',
-    },
+  function setGraphOptions(){
+    this.options = {
+      pieHole: 0.6,
+      'legend':'none',
+      backgroundColor: 'transparent',
+      pieSliceTextStyle: {
+      color: 'transparent',
+      },
+    };
   };
 
   function setUpUiEvents(){
@@ -24,7 +35,7 @@ function calculateCashflows() {
 
   }
 
-  function initializeResults(){
+  function initializeResultsDisplays(){
     this.resultsArray = [];
 
     var r1 = new Result();
@@ -51,7 +62,6 @@ function calculateCashflows() {
     this.resultsArray.push(r2);
     this.resultsArray.push(r3);
     this.resultsArray.push(r4);
-
   }
 
   function getValuesFromSliders(){
@@ -86,7 +96,7 @@ function calculateCashflows() {
 
   };
 
-  function createSubPayment(result){
+  function appendSubPaymentResultDomElements(result){
     r = result
     var div = document.createElement("div");
     div.className = 'result-cost';
@@ -115,7 +125,7 @@ function calculateCashflows() {
     for(var i = 0; i<this.resultsArray.length; i++){
       r = resultsArray[i];
       r.value = r.fixedCost + this.monthlyPayment * r.fractionOfProjectSize;
-      createSubPayment(r);
+      appendSubPaymentResultDomElements(r);
     };
   };
 
@@ -136,9 +146,10 @@ function calculateCashflows() {
 
   function updatePieChart(){
     this.chart = new google.visualization.PieChart(document.getElementById('donutchart'));
-    this.chart.draw(this.data, options);
+    this.chart.draw(this.data, this.options);
   }
 
+  // This is called when the user changes the input values on the UI.
   function updateDisplay() {
     getValuesFromSliders();
     updateNumericResults();
@@ -147,11 +158,12 @@ function calculateCashflows() {
     updateMonthlyPaymentResults();
     parseDataForPieChart();
     updatePieChart();
-
   };
-    setUpUiEvents();
-    // Initialize display before sliders are moved.
-    initializeResults();
-    updateDisplay();
+
+  // Run these after the html loads.
+  setUpUiEvents();
+  setGraphOptions();
+  initializeResultsDisplays();
+  updateDisplay();
 
 };
