@@ -121,18 +121,12 @@ function calculateCashflows() {
     };
 
     //  test stuff
-
-    // Get the last <li> element ("Milk") of <ul> with id="myList2"
-    var itm = document.getElementsByClassName("sliders-div")[0];
-
-    // Copy the <li> element and its child nodes
+    var itm = document.getElementById("slider-box-template");
     var cln = itm.cloneNode(true);
-    console.log(cln);
-
-    // Append the cloned <li> element to <ul> with id="myList1"
+    console.log(cln.className);
+    cln.className = 'slider-box'
+    // debugger
     document.getElementsByClassName("sliders-div")[0].appendChild(cln);
-
-debugger
 
   };
 
