@@ -1,17 +1,17 @@
-- fix commas in 7 digit numbers
-- make inputs created dynamically
+- rewrite with Angular
 - figure out new inputs and outputs that make sense
 - create some realish math for the cost breakdown
 - fix math in monthly payment calc
-- rewrite with Angular
 
 
 - make slider values update while sliding
 - figure out text wrapping
 - create pulldown, so you can select from multiple projects, each which would be an object
 
-
+cancelled
+- make inputs created dynamically
 
 done
 - nix second header or give better title, and vertically center
 - update pie chart with dom fractions
+- fix commas in 7 digit numbers
