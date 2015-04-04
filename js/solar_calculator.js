@@ -1,7 +1,16 @@
 // Monkey patch in new function on String.prototype to format currency numbers
 String.prototype.insertComma = function() {
-  if (this.length >= 4) {
-    return (this.slice(0,-3) + "," + this.slice(-3 + Math.abs(0)));
+  // Remove number past decimal.
+  var arr  = this.split(".");
+  var newStr = arr[0];
+
+  // Insert commas at appropriate locations.
+  if (newStr.length > 6) {
+    return (newStr.slice(0,-6) + "," + newStr.slice(-6, -3) + "," + newStr.slice(-3));
+  } else if (newStr.length > 3) {
+    return (newStr.slice(0,-3) + "," + newStr.slice(-3));
+  }else{
+    return newStr.slice(0);
   }
 };
 
@@ -53,7 +62,6 @@ function calculateCashflows() {
     this.resultsArray.push(r2);
     this.resultsArray.push(r3);
     this.resultsArray.push(r4);
-
   }
 
   function getValuesFromSliders(){
@@ -119,15 +127,6 @@ function calculateCashflows() {
       r.value = r.fixedCost + this.monthlyPayment * r.fractionOfProjectSize;
       appendSubPaymentResultDomElements(r);
     };
-
-    // //  test stuff
-    // var itm = document.getElementById("slider-box-template");
-    // var cln = itm.cloneNode(true);
-    // console.log(cln.className);
-    // cln.className = 'slider-box'
-    // // debugger
-    // document.getElementsByClassName("sliders-div")[0].appendChild(cln);
-
   };
 
   function parseDataForPieChart(){
